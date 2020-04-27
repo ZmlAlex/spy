@@ -2,10 +2,8 @@ import 'react-native-gesture-handler';
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
-import {View, Button} from 'react-native';
 
 import GameScreen from '../components/screens/GameScreen';
-import DetailsScreen from '../components/screens/DetailsScreen';
 import RolesScreen from '../components/screens/RolesScreen';
 
 import PlayersOptions from '../components/options/PlayersOptions';
@@ -39,7 +37,6 @@ const SpyNavigator = () => {
         <Stack.Screen name="Набор" component={PackagesOptions} />
       </Stack.Navigator>
     </NavigationContainer>
-    // <TutorialScreen />
   );
 };
 

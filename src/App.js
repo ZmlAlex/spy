@@ -1,24 +1,16 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/lib/integration/react';
+import {persistor, store} from './redux/store';
 
-import SpyNavigator from './navigation';
-
-import store from './redux/store';
-import Tutorial from './components/Tutorial';
+import Game from './containers/Game';
 
 const App = () => {
-  const [onDone, setOnDone] = useState(false);
-
-  const handleOnDone = () => {
-    // User finished the introduction. Show real app through
-    // navigation or simply by controlling state
-    setOnDone(true);
-  };
-
   return (
     <Provider store={store}>
-      {/* {onDone ? <SpyNavigator /> : <Tutorial handleOnDone={handleOnDone} />} */}
-      <SpyNavigator />
+      <PersistGate loading={null} persistor={persistor}>
+        <Game />
+      </PersistGate>
     </Provider>
   );
 };

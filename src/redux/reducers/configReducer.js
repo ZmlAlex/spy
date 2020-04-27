@@ -4,22 +4,18 @@ const configSlice = createSlice({
   name: 'config',
   initialState: {
     loading: 'idle',
+    playerCount: 3,
+    timerCount: 3,
+    package: 'Базовый',
+    tutorialIsRead: false,
   },
   reducers: {
-    addConfig(state, action) {
-      if (state.loading === 'idle') {
-        state.loading = 'pending';
-      }
-    },
     changeConfig(state, action) {
-      if (state.loading === 'pending') {
-        state.loading = 'idle';
-        state.users = action.payload;
-      }
+      state[action.payload.option] = action.payload.value;
     },
   },
 });
 
-export const {addConfig, changeConfig} = configSlice.actions;
+export const {changeConfig} = configSlice.actions;
 
 export default configSlice.reducer;
