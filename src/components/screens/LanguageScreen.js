@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {changeConfig} from '../../redux/reducers/configReducer';
+import {setLocale} from 'react-redux-i18n';
 import {View, Text, Button, FlatList} from 'react-native';
 import {ListItem} from 'react-native-elements';
 
-import languages from '../../languages';
+import {languagesList} from '../../languages';
 
 const LanguageScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const [currentLanguage, setCurrentLanguage] = useState(null);
+  const [currentLanguage, setCurrentLanguage] = useState({});
 
   const handlePress = () => {
-    dispatch(changeConfig({option: 'language', value: currentLanguage}));
+    dispatch(setLocale(currentLanguage.value));
 
     navigation.navigate('Tutorial');
   };
@@ -21,9 +21,9 @@ const LanguageScreen = ({navigation}) => {
   const renderItem = ({item, i}) => (
     <ListItem
       key={i}
-      title={`${item}`}
+      title={item.title}
       leftIcon={{name: item.icon}}
-      checkmark={item === currentLanguage}
+      checkmark={item.title === currentLanguage.title}
       onPress={() => setCurrentLanguage(item)}
       bottomDivider
     />
@@ -34,7 +34,7 @@ const LanguageScreen = ({navigation}) => {
       <View style={{flex: 1, marginTop: 30}}>
         <FlatList
           keyExtractor={keyExtractor}
-          data={Object.keys(languages).map((elem) => languages[elem].title)}
+          data={languagesList}
           renderItem={renderItem}
         />
       </View>

@@ -53,6 +53,7 @@ const RootStackScreen = () => {
     </RootStack.Navigator>
   );
 };
+
 export default () => {
   return (
     <NavigationContainer>

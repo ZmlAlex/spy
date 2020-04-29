@@ -1,6 +1,7 @@
 import React, {useMemo, useLayoutEffect} from 'react';
 import {View, Text, Button} from 'react-native';
 import {useSelector, shallowEqual, useDispatch} from 'react-redux';
+import {I18n} from 'react-redux-i18n';
 import {ListItem} from 'react-native-elements';
 import {resetConfig} from '../../redux/reducers/configReducer';
 
@@ -24,6 +25,7 @@ const GameScreen = ({navigation}) => {
 
   return (
     <View style={{flex: 1}}>
+      <Text>{I18n.t('application.title')}</Text>
       {optionsList.map((item, i) => (
         <ListItem
           key={i}
