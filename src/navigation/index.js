@@ -1,43 +1,62 @@
 import 'react-native-gesture-handler';
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import GameScreen from '../components/screens/GameScreen';
 import RolesScreen from '../components/screens/RolesScreen';
+
+import LanguageScreen from '../components/screens/LanguageScreen';
+import TutorialScreen from '../components/screens/TutorialScreen';
 
 import PlayersOptions from '../components/options/PlayersOptions';
 import TimerOptions from '../components/options/TimerOptions';
 import PackagesOptions from '../components/options/PackagesOptions';
 import TimerScreen from '../components/screens/TimerScreen';
 
-const Stack = createStackNavigator();
+const TutorialStack = createStackNavigator();
 
-const SpyNavigator = () => {
+const TutorialStackScreen = () => (
+  <TutorialStack.Navigator headerMode="none">
+    <TutorialStack.Screen name="Languages" component={LanguageScreen} />
+    <TutorialStack.Screen name="Tutorial" component={TutorialScreen} />
+  </TutorialStack.Navigator>
+);
+
+const GameStack = createStackNavigator();
+
+const GameStackScreen = () => (
+  <GameStack.Navigator>
+    <GameStack.Screen name="Игра" component={GameScreen} />
+    <GameStack.Screen name="Роли" component={RolesScreen} />
+    <GameStack.Screen name="Время" component={TimerScreen} />
+
+    <GameStack.Screen name="Игроки" component={PlayersOptions} />
+    <GameStack.Screen name="Таймер" component={TimerOptions} />
+    <GameStack.Screen name="Набор" component={PackagesOptions} />
+  </GameStack.Navigator>
+);
+
+const RootStack = createStackNavigator();
+
+const RootStackScreen = () => {
+  const tutorialIsRead = useSelector((state) => state.config.tutorialIsRead);
+
+  return (
+    <RootStack.Navigator headerMode="none">
+      {tutorialIsRead ? (
+        <RootStack.Screen name="game" component={GameStackScreen} />
+      ) : (
+        <RootStack.Screen name="tutorial" component={TutorialStackScreen} />
+      )}
+    </RootStack.Navigator>
+  );
+};
+export default () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Игра" component={GameScreen} />
-        <Stack.Screen name="Роли" component={RolesScreen} />
-        <Stack.Screen
-          name="Время"
-          component={TimerScreen}
-          options={({navigation}) => ({
-            headerLeft: () => (
-              <HeaderBackButton
-                label="Игра"
-                onPress={() => navigation.navigate('Игра')}
-              />
-            ),
-          })}
-        />
-
-        <Stack.Screen name="Игроки" component={PlayersOptions} />
-        <Stack.Screen name="Таймер" component={TimerOptions} />
-        <Stack.Screen name="Набор" component={PackagesOptions} />
-      </Stack.Navigator>
+      <RootStackScreen />
     </NavigationContainer>
   );
 };
-
-export default SpyNavigator;

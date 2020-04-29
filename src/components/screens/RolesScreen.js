@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const RolesScreen = ({navigation, handleOnDone}) => {
+const RolesScreen = ({navigation}) => {
   const config = useSelector((state) => state.config, shallowEqual);
   const currentPack = useMemo(
     () => packs.find((item) => item.name === config.package),

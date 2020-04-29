@@ -1,7 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
+import {HeaderBackButton} from '@react-navigation/stack';
 import {View, Text, Button} from 'react-native';
 
-const TimerScreen = () => {
+const TimerScreen = ({navigation}) => {
   const [counter, setCounter] = useState(20);
 
   useEffect(() => {
@@ -14,6 +15,17 @@ const TimerScreen = () => {
 
     return () => clearInterval(timer);
   }, [counter]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <HeaderBackButton
+          label="Игра"
+          onPress={() => navigation.navigate('Игра')}
+        />
+      ),
+    });
+  }, [navigation]);
 
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>

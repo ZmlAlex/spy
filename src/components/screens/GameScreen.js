@@ -1,16 +1,26 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useLayoutEffect} from 'react';
 import {View, Text, Button} from 'react-native';
-import {useSelector, shallowEqual} from 'react-redux';
+import {useSelector, shallowEqual, useDispatch} from 'react-redux';
 import {ListItem} from 'react-native-elements';
+import {resetConfig} from '../../redux/reducers/configReducer';
 
 import {optionsList, packs} from '../../data/config';
 
 const GameScreen = ({navigation}) => {
   const config = useSelector((state) => state.config, shallowEqual);
+  const dispatch = useDispatch();
   const currentPack = useMemo(
     () => packs.find((item) => item.name === config.package),
     [config.package],
   );
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <Button onPress={(e) => dispatch(resetConfig())} title="Язык" />
+      ),
+    });
+  }, [navigation, dispatch]);
 
   return (
     <View style={{flex: 1}}>

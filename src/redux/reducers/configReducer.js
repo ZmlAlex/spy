@@ -7,15 +7,20 @@ const configSlice = createSlice({
     playerCount: 3,
     timerCount: 3,
     package: 'Базовый',
+    language: null,
     tutorialIsRead: false,
   },
   reducers: {
     changeConfig(state, action) {
       state[action.payload.option] = action.payload.value;
     },
+    resetConfig(state, action) {
+      state.tutorialIsRead = false;
+      state.language = null;
+    },
   },
 });
 
-export const {changeConfig} = configSlice.actions;
+export const {changeConfig, resetConfig} = configSlice.actions;
 
 export default configSlice.reducer;
