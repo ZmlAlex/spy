@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 const TutorialScreen = () => {
   const dispatch = useDispatch();
 
-  alert(JSON.stringify(I18n.t('tutorialScreen')));
+  // alert(JSON.stringify(I18n.t('tutorialScreen')));
   const handleOnDone = () => {
     // User finished the introduction. Show real app through
     // navigation or simply by controlling state

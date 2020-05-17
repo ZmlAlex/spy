@@ -80,6 +80,8 @@ target 'spy' do
 
 
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   target 'spyTests' do
     inherit! :complete
     # Pods for testing

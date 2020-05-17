@@ -1,10 +1,12 @@
 export const languagesList = [
   {
     title: 'English',
+    avatarUrl: require('../assets/languageScreen/rus.png'),
     value: 'en',
   },
   {
     title: 'Русский',
+    avatarUrl: require('../assets/languageScreen/rus.png'),
     value: 'ru',
   },
 ];
