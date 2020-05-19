@@ -122,6 +122,13 @@ const Header = styled.View`
   justify-content: flex-end;
 `;
 
+const HeaderText = styled.Text`
+  align-self: center;
+  margin-bottom: 25;
+  font-size: 18;
+  font-weight: bold;
+`;
+
 const Content = styled.View`
   flex: 1;
   align-items: stretch;
@@ -138,7 +145,7 @@ const Footer = styled.View`
 
 const LanguageScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const [currentLanguage, setCurrentLanguage] = useState({});
+  const [currentLanguage, setCurrentLanguage] = useState(false);
 
   const handlePress = () => {
     dispatch(setLocale(currentLanguage.value));
@@ -188,7 +195,7 @@ const LanguageScreen = ({navigation}) => {
           source={require('../../assets/languageScreen/test.svg')}
         />
         <Header>
-          <Text style={styles.headerText}>Выбери язык</Text>
+          <HeaderText>Выбери язык</HeaderText>
         </Header>
         <Content>
           <View style={{marginBottom: 90, marginHorizontal: 18, zIndex: 10}}>
@@ -201,7 +208,11 @@ const LanguageScreen = ({navigation}) => {
           </View>
         </Content>
         <Footer>
-          <GradientButton onPress={handlePress} />
+          <GradientButton
+            onPress={handlePress}
+            title="далее"
+            // isSelected={currentLanguage}
+          />
         </Footer>
       </Container>
     </>

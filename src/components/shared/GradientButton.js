@@ -18,7 +18,7 @@ var styles = StyleSheet.create({
 });
 
 const Container = styled.View`
-  /* flex: 1; */
+  /* opacity: ${({isSelected}) => (isSelected ? 1 : 0)}; */
 `;
 
 const StyledLTouchableOpacity = styled.TouchableOpacity`
@@ -31,15 +31,16 @@ const Title = styled.Text`
   font-size: 20;
 `;
 
-const GradientButton = ({onPress}) => {
+const GradientButton = ({onPress, isSelected, title}) => {
+  console.log('dis', !!isSelected);
   return (
     <>
-      <Container>
+      <Container isSelected={isSelected}>
         <StyledLTouchableOpacity onPress={onPress}>
           <LinearGradient
             colors={['#B10CFF', '#9D00E8']}
             style={styles.gradient}>
-            <Title>далее</Title>
+            <Title>{title}</Title>
           </LinearGradient>
         </StyledLTouchableOpacity>
       </Container>

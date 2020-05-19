@@ -13,11 +13,13 @@ import {
 
 import AsyncStorage from '@react-native-community/async-storage';
 import configSlice from '../reducers/configReducer';
+import modalSlice from '../reducers/modalReducer';
 
 import {translationsObject} from '../../languages';
 
 const rootReducer = combineReducers({
   config: configSlice,
+  modal: modalSlice,
   i18n: i18nReducer,
 });
 
