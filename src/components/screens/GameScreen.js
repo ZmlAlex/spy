@@ -121,12 +121,7 @@ const GameScreen = ({navigation}) => {
   const [option, setOption] = useState('players');
 
   const config = useSelector((state) => state.config);
-  const modal = useSelector((state) => state.modal);
   const dispatch = useDispatch();
-  const currentPack = useMemo(
-    () => packs.find((item) => item.name === config.package),
-    [config.package],
-  );
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -190,7 +185,6 @@ const GameScreen = ({navigation}) => {
               <CardText>{config.timerCount}</CardText>
             </Card>
             <Card
-              // onPress={() => navigation.navigate('Игроки')}
               onPress={() => {
                 setOption('players');
                 setModalVisible(true);
@@ -202,7 +196,7 @@ const GameScreen = ({navigation}) => {
           <View style={{flex: 2}}>
             <Card onPress={() => navigation.navigate('Набор')}>
               <CardText>Место для разгадки</CardText>
-              <CardText>{config.package}</CardText>
+              <CardText>{config.package.name}</CardText>
             </Card>
           </View>
         </Content>
@@ -213,15 +207,6 @@ const GameScreen = ({navigation}) => {
           />
         </Footer>
       </Container>
-      {/* <Modal
-        animationType="slide"
-        transparent={true}
-        visible={true}
-        onRequestClose={() => {
-          alert('Modal has been closed.');
-        }}>
-        <Text>2</Text>
-      </Modal> */}
     </>
   );
 };

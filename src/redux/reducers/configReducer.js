@@ -6,7 +6,12 @@ const configSlice = createSlice({
     loading: 'idle',
     playerCount: 3,
     timerCount: 3,
-    package: 'Базовый',
+    package: {
+      name: '',
+      id: null,
+      level: null,
+      places: [],
+    },
     language: null,
     tutorialIsRead: false,
   },
