@@ -15,6 +15,9 @@ import TimerOptions from '../components/options/TimerOptions';
 import PackagesOptions from '../components/options/PackagesOptions';
 import TimerScreen from '../components/screens/TimerScreen';
 
+//helpers
+import {generateHeaderStyles} from '../utils/navigationHelpers';
+
 const TutorialStack = createStackNavigator();
 
 const TutorialStackScreen = () => (
@@ -31,25 +34,25 @@ const GameStackScreen = () => (
     <GameStack.Screen
       name="Игра"
       component={GameScreen}
-      options={{
-        headerStyle: {
-          shadowColor: 'transparent',
-        },
-      }}
+      options={generateHeaderStyles()}
     />
-    <GameStack.Screen name="Роли" component={RolesScreen} />
-    <GameStack.Screen name="Время" component={TimerScreen} />
+    <GameStack.Screen
+      name="Роли"
+      component={RolesScreen}
+      options={generateHeaderStyles()}
+    />
+    <GameStack.Screen
+      name="Время"
+      component={TimerScreen}
+      options={generateHeaderStyles()}
+    />
 
     <GameStack.Screen name="Игроки" component={PlayersOptions} />
     <GameStack.Screen name="Таймер" component={TimerOptions} />
     <GameStack.Screen
       name="Набор"
       component={PackagesOptions}
-      options={{
-        headerStyle: {
-          shadowColor: 'transparent',
-        },
-      }}
+      options={generateHeaderStyles()}
     />
   </GameStack.Navigator>
 );

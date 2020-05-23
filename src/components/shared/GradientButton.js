@@ -23,6 +23,7 @@ const Container = styled.View`
 
 const StyledLTouchableOpacity = styled.TouchableOpacity`
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
+  border-radius: 8;
   width: 148px;
 `;
 
