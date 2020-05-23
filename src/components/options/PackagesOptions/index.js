@@ -43,6 +43,7 @@ const Header = styled.View`
   justify-content: flex-end;
   padding-bottom: 20px;
   padding-top: 20px;
+  padding-horizontal: 40px;
 `;
 
 const HeaderText = styled.Text`
@@ -60,10 +61,10 @@ const StyledFlatList = styled.FlatList`
 
 const PackagesOption = ({navigation}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentPack, setCurrentPack] = useState('');
+
   const pack = useSelector((state) => state.config.package, shallowEqual);
   const dispatch = useDispatch();
-
-  const [currentPack, setCurrentPack] = useState('');
 
   const handlePress = (item) => {
     dispatch(changeConfig({option: 'package', value: item}));
@@ -72,7 +73,6 @@ const PackagesOption = ({navigation}) => {
   const keyExtractor = (_, index) => index.toString();
 
   const renderItem = ({item, index}) => {
-    console.log('ITEM', item, index);
     return (
       <PackageCard
         active={pack.id === item.id}

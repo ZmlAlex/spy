@@ -9,8 +9,8 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   gradient: {
-    paddingRight: 46,
-    paddingLeft: 46,
+    paddingRight: 26,
+    paddingLeft: 26,
     paddingTop: 10,
     paddingBottom: 10,
     borderRadius: 8,
@@ -23,6 +23,7 @@ const Container = styled.View`
 
 const StyledLTouchableOpacity = styled.TouchableOpacity`
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
+  width: 148px;
 `;
 
 const Title = styled.Text`
@@ -32,7 +33,6 @@ const Title = styled.Text`
 `;
 
 const GradientButton = ({onPress, isSelected, title}) => {
-  console.log('dis', !!isSelected);
   return (
     <>
       <Container isSelected={isSelected}>

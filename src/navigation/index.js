@@ -28,7 +28,15 @@ const GameStack = createStackNavigator();
 
 const GameStackScreen = () => (
   <GameStack.Navigator>
-    <GameStack.Screen name="Игра" component={GameScreen} />
+    <GameStack.Screen
+      name="Игра"
+      component={GameScreen}
+      options={{
+        headerStyle: {
+          shadowColor: 'transparent',
+        },
+      }}
+    />
     <GameStack.Screen name="Роли" component={RolesScreen} />
     <GameStack.Screen name="Время" component={TimerScreen} />
 

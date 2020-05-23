@@ -1,13 +1,5 @@
 import React, {useMemo, useLayoutEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableHighlight,
-  Modal,
-} from 'react-native';
+import {View, Button, StyleSheet, Modal} from 'react-native';
 import styled from 'styled-components';
 import SvgUri from 'react-native-svg-uri';
 import GradientButton from '../shared/GradientButton';
@@ -16,11 +8,14 @@ import {useSelector, shallowEqual, useDispatch} from 'react-redux';
 import {I18n} from 'react-redux-i18n';
 import {ListItem} from 'react-native-elements';
 import {BlurView, VibrancyView} from '@react-native-community/blur';
+import {createSlides} from '../../redux/reducers/rolesReducer';
 import {resetConfig} from '../../redux/reducers/configReducer';
 
 import {optionsList, packs} from '../../data/config';
 import PlayersOptions from '../options/PlayersOptions';
 import TimerOptions from '../options/TimerOptions';
+
+import generateNewGame from '../../utils/generateNewGame';
 
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -120,8 +115,12 @@ const GameScreen = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [option, setOption] = useState('players');
 
-  const config = useSelector((state) => state.config);
   const dispatch = useDispatch();
+  const config = useSelector((state) => state.config);
+  const currentPack = useMemo(
+    () => packs.find((item) => item.name === config.package.name),
+    [config.package],
+  );
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -202,7 +201,15 @@ const GameScreen = ({navigation}) => {
         </Content>
         <Footer>
           <GradientButton
-            onPress={() => navigation.navigate('Роли')}
+            // onPress={() => navigation.navigate('Роли')}
+            onPress={() => {
+              const slides = generateNewGame(config.playerCount, currentPack);
+              dispatch(createSlides(slides));
+              /* 1. Navigate to the Details route with params */
+              navigation.navigate('Роли', {
+                slideId: 0,
+              });
+            }}
             title="Играть"
           />
         </Footer>
