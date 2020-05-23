@@ -42,7 +42,15 @@ const GameStackScreen = () => (
 
     <GameStack.Screen name="Игроки" component={PlayersOptions} />
     <GameStack.Screen name="Таймер" component={TimerOptions} />
-    <GameStack.Screen name="Набор" component={PackagesOptions} />
+    <GameStack.Screen
+      name="Набор"
+      component={PackagesOptions}
+      options={{
+        headerStyle: {
+          shadowColor: 'transparent',
+        },
+      }}
+    />
   </GameStack.Navigator>
 );
 

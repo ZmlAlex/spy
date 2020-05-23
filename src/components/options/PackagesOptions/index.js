@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
 
 const Container = styled.View`
   flex: 1;
-  padding-vertical: 20px;
   background-color: white;
 `;
 
@@ -42,8 +41,8 @@ const Header = styled.View`
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 20px;
-  padding-top: 20px;
-  padding-horizontal: 40px;
+  padding-top: 10px;
+  padding: 10px 40px 20px 40px;
 `;
 
 const HeaderText = styled.Text`
@@ -56,7 +55,15 @@ const Content = styled.View`
 
 const StyledFlatList = styled.FlatList`
   padding-top: 30px;
-  padding-horizontal: 40px;
+  padding: 30px 40px 0 40px;
+`;
+
+const PacksList = styled.View`
+  flex: 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 40px;
 `;
 
 const PackagesOption = ({navigation}) => {
@@ -70,11 +77,10 @@ const PackagesOption = ({navigation}) => {
     dispatch(changeConfig({option: 'package', value: item}));
   };
 
-  const keyExtractor = (_, index) => index.toString();
-
-  const renderItem = ({item, index}) => {
+  const renderItem = (item, index) => {
     return (
       <PackageCard
+        key={index}
         active={pack.id === item.id}
         setIsOpen={setIsOpen}
         handlePress={handlePress}
@@ -103,26 +109,7 @@ const PackagesOption = ({navigation}) => {
             <HeaderText>под свою компанию</HeaderText>
           </Header>
           <Content>
-            <View
-              style={
-                {
-                  // flex: 1,
-                  // width: 500,
-                  // marginBottom: -20,
-                  // flexDirection: 'row',
-                  // flexWrap: 'wrap',
-                  // justifyContent: 'space-between',
-                  // paddingHorizontal: 40,
-                  // backgroundColor: 'red',
-                }
-              }>
-              <StyledFlatList
-                keyExtractor={keyExtractor}
-                data={packs}
-                numColumns={2}
-                renderItem={renderItem}
-              />
-            </View>
+            <PacksList>{packs.map(renderItem)}</PacksList>
           </Content>
         </ScrollView>
       </Container>

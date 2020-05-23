@@ -1,17 +1,9 @@
-import React, {useMemo} from 'react';
-import {useSelector, shallowEqual} from 'react-redux';
+import React from 'react';
+import {useSelector} from 'react-redux';
 import styled from 'styled-components';
-import AppIntroSlider from 'react-native-app-intro-slider';
-import {View, Text, Button, StyleSheet, Image, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
-import LinearGradient from 'react-native-linear-gradient';
 import GradientButton from '../shared/GradientButton';
-
-import {packs} from '../../data/config';
-import generateNewGame from '../../utils/generateNewGame';
-
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   slide: {
@@ -20,10 +12,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'blue',
   },
-  image: {},
+  image: {
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+  },
   text: {
     color: 'rgba(255, 255, 255, 0.8)',
     textAlign: 'center',
+    position: 'absolute',
   },
   title: {
     fontSize: 22,
@@ -41,18 +39,26 @@ const styles = StyleSheet.create({
 
 const Container = styled.View`
   flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 0 50px;
+`;
+
+const Content = styled.View`
+  flex: 0 1 321px;
+  min-height: 321px;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
-  padding-vertical: 80;
-  padding-horizontal: 50;
+  background-color: blue;
 `;
 
 const Card = styled.View`
-  align-self: stretch;
   height: 321px;
+  position: relative;
+  width: 284px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: white;
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -60,22 +66,35 @@ const Card = styled.View`
 
 const CardText = styled.Text`
   font-weight: bold;
-  color: ${({spy}) => (spy ? '#FF0000' : '#000')};
+  font-size: 20px;
+  padding: 10px;
+  margin: ${({isSpy}) => (isSpy ? '0' : 'auto')};
+  color: ${({isSpy}) => (isSpy ? '#FF0000' : '#000')};
+`;
+
+const Header = styled.View`
+  align-self: stretch;
+  justify-content: flex-start;
+  height: 130px;
 `;
 
 const Title = styled.Text`
   font-weight: bold;
   font-size: 20px;
   line-height: 23px;
-  flex-basis: 93px;
   color: black;
+  text-align: center;
 `;
 const Footer = styled.View`
+  flex: 1;
   align-items: center;
+  background-color: green;
 `;
 
 const FooterText = styled.Text`
-  padding: 10px;
+  margin: 39px 0 21px 0;
+  font-size: 16px;
+  height: 18px;
 `;
 
 const RolesScreen = ({route, navigation}) => {
@@ -91,9 +110,11 @@ const RolesScreen = ({route, navigation}) => {
 
   return (
     <Container>
-      <Title>{slide.title}</Title>
+      <Header>
+        <Title>{slide.title}</Title>
+      </Header>
       <Card>
-        <CardText spy={slide.isSpy}>{slide.location}</CardText>
+        <CardText isSpy={slide.isSpy}>{slide.location}</CardText>
         {slide.image && (
           <SvgUri
             style={styles.image}
@@ -102,20 +123,17 @@ const RolesScreen = ({route, navigation}) => {
           />
         )}
       </Card>
-      <Footer>
-        <FooterText>{slide.additionalText}</FooterText>
-        <GradientButton
-          onPress={() => {
-            /* 1. Navigate to the Details route with params */
-            isLastSlide
-              ? navigation.navigate('Время')
-              : navigation.navigate('Роли', {
-                  slideId: slideId + 1,
-                });
-          }}
-          title={slide.buttonText}
-        />
-      </Footer>
+      <FooterText>{slide.additionalText}</FooterText>
+      <GradientButton
+        onPress={() => {
+          isLastSlide
+            ? navigation.navigate('Время')
+            : navigation.navigate('Роли', {
+                slideId: slideId + 1,
+              });
+        }}
+        title={slide.buttonText}
+      />
     </Container>
   );
 };
