@@ -1,11 +1,17 @@
 import * as React from 'react';
 import Svg, {Path, G, Defs, LinearGradient, Stop} from 'react-native-svg';
+import {Dimensions} from 'react-native';
 
-const Logo = (props) => {
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+const ImageBackground = (props) => {
   return (
     <Svg
-      width="100%"
-      height="100%"
+      // width="100%"
+      // height="100%"
+      width={windowWidth}
+      height={windowHeight}
       viewBox="0 0 375 538"
       fill="none"
       {...props}>
@@ -208,4 +214,4 @@ const Logo = (props) => {
   );
 };
 
-export default Logo;
+export default ImageBackground;

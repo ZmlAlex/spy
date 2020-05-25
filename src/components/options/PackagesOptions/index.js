@@ -12,7 +12,7 @@ import {packs} from '../../../data/config';
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    top: '-5%',
+    top: '-6%',
     position: 'absolute',
   },
   myStarStyle: {
@@ -40,9 +40,7 @@ const Container = styled.View`
 const Header = styled.View`
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 20px;
-  padding-top: 10px;
-  padding: 10px 40px 20px 40px;
+  padding: 10px 0 20px 20px;
 `;
 
 const HeaderText = styled.Text`
@@ -53,17 +51,18 @@ const Content = styled.View`
   flex: 1;
 `;
 
-const StyledFlatList = styled.FlatList`
-  padding-top: 30px;
-  padding: 30px 40px 0 40px;
-`;
-
 const PacksList = styled.View`
   flex: 1;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 40px;
+  align-items: flex-start;
+  padding: 0 15px;
+`;
+
+const StyledFlatList = styled.FlatList`
+  padding-top: 30px;
+  padding: 30px 40px 0 40px;
 `;
 
 const PackagesOption = ({navigation}) => {
@@ -76,6 +75,8 @@ const PackagesOption = ({navigation}) => {
   const handlePress = (item) => {
     dispatch(changeConfig({option: 'package', value: item}));
   };
+
+  const keyExtractor = (_, index) => index.toString();
 
   const renderItem = (item, index) => {
     return (

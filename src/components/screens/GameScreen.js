@@ -17,6 +17,8 @@ import TimerOptions from '../options/TimerOptions';
 
 import generateNewGame from '../../utils/generateNewGame';
 
+import BackgroundImage from '../shared/BackgroundImageGame';
+
 const styles = StyleSheet.create({
   backgroundImage: {
     top: '-1%',
@@ -66,10 +68,13 @@ const styles = StyleSheet.create({
   },
 });
 
+const StyledBackgroudImage = styled(BackgroundImage)`
+  position: absolute;
+`;
+
 const Container = styled.View`
   flex: 1;
-  padding-horizontal: 40px;
-  padding-vertical: 20px;
+  padding: 0 30px 20px 30px;
   background-color: white;
 `;
 
@@ -78,7 +83,7 @@ const Header = styled.View`
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 20px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 `;
 
 const HeaderText = styled.Text`
@@ -89,10 +94,11 @@ const Content = styled.View`
   flex: 1;
   align-items: stretch;
   justify-content: center;
+  /* background-color: red; */
 `;
 
 const Footer = styled.View`
-  flex: 0.4;
+  flex: 0.3;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -163,11 +169,12 @@ const GameScreen = ({navigation}) => {
       </Modal>
 
       <Container>
-        <SvgUri
+        {/* <SvgUri
           style={styles.backgroundImage}
           width="500"
           source={require('../../assets/gameScreen/background.svg')}
-        />
+        /> */}
+        <StyledBackgroudImage />
         <Header>
           <HeaderText>Настрой игру</HeaderText>
           <HeaderText>под свою компанию</HeaderText>
@@ -188,7 +195,7 @@ const GameScreen = ({navigation}) => {
                 setOption('players');
                 setModalVisible(true);
               }}>
-              <CardText>Количество игроков</CardText>
+              <CardText>Кол-во игроков</CardText>
               <CardText>{config.playerCount}</CardText>
             </Card>
           </View>
@@ -201,11 +208,9 @@ const GameScreen = ({navigation}) => {
         </Content>
         <Footer>
           <GradientButton
-            // onPress={() => navigation.navigate('Роли')}
             onPress={() => {
               const slides = generateNewGame(config.playerCount, currentPack);
               dispatch(createSlides(slides));
-              /* 1. Navigate to the Details route with params */
               navigation.navigate('Роли', {
                 slideId: 0,
               });

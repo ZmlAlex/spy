@@ -1,8 +1,9 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
+
 import GradientButton from '../shared/GradientButton';
 
 const styles = StyleSheet.create({
@@ -40,28 +41,52 @@ const styles = StyleSheet.create({
 const Container = styled.View`
   flex: 1;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   background-color: white;
-  padding: 0 50px;
+  padding: 0 20px;
 `;
 
 const Content = styled.View`
-  flex: 0 1 321px;
-  min-height: 321px;
-  align-items: center;
-  justify-content: space-between;
-  background-color: blue;
+  flex: 0.7;
+  /* min-height: 321px; */
+  justify-content: center;
+  /* background-color: red; */
 `;
 
+// const Card = styled.View`
+//   /* height: 321px; */
+//   position: relative;
+//   width: 100%;
+//   align-items: center;
+//   justify-content: flex-start;
+//   background-color: white;
+//   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
+//   border-radius: 10px;
+// max-height: 321px;
+// `;
+
 const Card = styled.View`
-  height: 321px;
-  position: relative;
-  width: 284px;
+  /* height: 321px; */
+  /* width: 100px; */
+  width: 100%;
+  align-self: center;
+  background-color: white;
+  height: 100%;
+  max-width: 298px;
+  max-height: 321px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  margin: 10px;
+  /* overflow: hidden; */
+  /* position: relative;
+  width: 100%;
   align-items: center;
   justify-content: flex-start;
-  background-color: white;
+  background-color: red;
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+  border-radius: 10px; */
+  /* max-height: 321px; */
 `;
 
 const CardText = styled.Text`
@@ -76,6 +101,8 @@ const Header = styled.View`
   align-self: stretch;
   justify-content: flex-start;
   height: 130px;
+  /* background-color: blue; */
+  flex: 0.15;
 `;
 
 const Title = styled.Text`
@@ -86,9 +113,9 @@ const Title = styled.Text`
   text-align: center;
 `;
 const Footer = styled.View`
-  flex: 1;
+  /* flex: 0.15; */
   align-items: center;
-  background-color: green;
+  /* background-color: green; */
 `;
 
 const FooterText = styled.Text`
@@ -96,6 +123,8 @@ const FooterText = styled.Text`
   font-size: 16px;
   height: 18px;
 `;
+
+const windowWidth = Dimensions.get('window').width;
 
 const RolesScreen = ({route, navigation}) => {
   const {slideId} = route.params;
@@ -113,27 +142,32 @@ const RolesScreen = ({route, navigation}) => {
       <Header>
         <Title>{slide.title}</Title>
       </Header>
-      <Card>
-        <CardText isSpy={slide.isSpy}>{slide.location}</CardText>
-        {slide.image && (
-          <SvgUri
-            style={styles.image}
-            // width="500"
-            source={slide.image}
-          />
-        )}
-      </Card>
-      <FooterText>{slide.additionalText}</FooterText>
-      <GradientButton
-        onPress={() => {
-          isLastSlide
-            ? navigation.navigate('Время')
-            : navigation.navigate('Роли', {
-                slideId: slideId + 1,
-              });
-        }}
-        title={slide.buttonText}
-      />
+      <Content>
+        <Card>
+          <CardText isSpy={slide.isSpy}>{slide.location}</CardText>
+          {slide.image && (
+            <SvgUri
+              style={styles.image}
+              // width="500"
+              width={windowWidth}
+              source={slide.image}
+            />
+          )}
+        </Card>
+      </Content>
+      <Footer>
+        <FooterText>{slide.additionalText}</FooterText>
+        <GradientButton
+          onPress={() => {
+            isLastSlide
+              ? navigation.navigate('Время')
+              : navigation.navigate('Роли', {
+                  slideId: slideId + 1,
+                });
+          }}
+          title={slide.buttonText}
+        />
+      </Footer>
     </Container>
   );
 };

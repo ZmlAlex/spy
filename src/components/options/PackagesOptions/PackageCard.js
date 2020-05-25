@@ -33,7 +33,7 @@ const Card = styled.TouchableOpacity`
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
   background-color: white;
   border-radius: 10px;
-  padding: 14px;
+  padding: 10px;
   padding-top: 9px;
   margin: auto;
   margin-bottom: 10px;

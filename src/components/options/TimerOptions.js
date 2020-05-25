@@ -20,7 +20,7 @@ const CardTitle = styled.Text`
 `;
 
 const CardsRow = styled.View`
-  flex: 1.5;
+  flex: 1;
   align-items: center;
   justify-content: flex-end;
 `;
@@ -28,7 +28,7 @@ const CardsRow = styled.View`
 const CardContainer = styled.View`
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  margin-bottom: 80px;
+  /* margin-bottom: 80px; */
   background-color: white;
 `;
 
@@ -53,7 +53,7 @@ const ButtonsRow = styled.View`
   flex: 1;
   flex-direction: row;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   width: 200px;
 `;
 

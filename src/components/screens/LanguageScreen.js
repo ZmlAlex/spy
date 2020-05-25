@@ -1,24 +1,28 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {useDispatch} from 'react-redux';
-import SvgUri from 'react-native-svg-uri';
 import {setLocale} from 'react-redux-i18n';
 import {View, Text, StyleSheet} from 'react-native';
 import {Avatar, Icon} from 'react-native-elements';
 import GradientButton from '../shared/GradientButton';
+import BackgroundImage from '../shared/BackgroundImageLanguage';
 
 import {languagesList} from '../../languages';
 
 const styles = StyleSheet.create({
   backgroundImage: {
-    top: '20%',
     position: 'absolute',
-    left: '-14%',
   },
 });
 
+const StyledBackgroudImage = styled(BackgroundImage)`
+  position: absolute;
+`;
+
 const Container = styled.View`
   flex: 1;
+  /* background-color: red; */
+  /* padding-horizontal: 40px; */
 `;
 
 const Languge = styled.TouchableOpacity`
@@ -48,13 +52,20 @@ const StyledFlatList = styled.FlatList`
   background-color: #e2e2e2;
   border-radius: 8px;
   overflow: hidden;
+  /* background-color: blue; */
+  /* flex: 1; */
   z-index: 10;
+  /* flex: 1; */
+  width: 218px;
+  /* background-color: red; */
+  /* max-width: 218px; */
 `;
 
 const Header = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
+  /* background-color: green; */
 `;
 
 const HeaderText = styled.Text`
@@ -69,6 +80,7 @@ const Content = styled.View`
   align-items: stretch;
   justify-content: center;
   margin: 0 80px;
+  /* background-color: red; */
 `;
 
 const Footer = styled.View`
@@ -76,6 +88,7 @@ const Footer = styled.View`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  /* background-color: blue; */
 `;
 
 const LanguageScreen = ({navigation}) => {
@@ -124,16 +137,18 @@ const LanguageScreen = ({navigation}) => {
   return (
     <>
       <Container style={styles.container}>
-        <SvgUri
-          style={styles.backgroundImage}
-          width="500"
-          source={require('../../assets/languageScreen/test.svg')}
-        />
+        <StyledBackgroudImage />
         <Header>
           <HeaderText>Выбери язык</HeaderText>
         </Header>
         <Content>
-          <View style={{marginBottom: 90, marginHorizontal: 18, zIndex: 10}}>
+          <View
+            style={{
+              marginBottom: 90,
+              zIndex: 10,
+              // backgroundColor: 'red',
+              alignItems: 'center',
+            }}>
             <StyledFlatList
               scrollEnabled={false}
               keyExtractor={keyExtractor}
