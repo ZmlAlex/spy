@@ -8,8 +8,7 @@ import {Icon} from 'react-native-elements';
 
 const Container = styled.View`
   flex: 1;
-  padding-horizontal: 40px;
-  padding-vertical: 20px;
+  padding: 20px 40px;
   align-items: center;
 `;
 
@@ -28,25 +27,27 @@ const CardsRow = styled.View`
 const CardContainer = styled.View`
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  /* margin-bottom: 80px; */
   background-color: white;
+  flex-direction: row;
 `;
 
 const CardNumber = styled.View`
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  height: 96px;
+  height: 91px;
+  width: 83px;
   align-items: center;
   justify-content: center;
   background-color: white;
+  transform: scale(1.1);
 `;
 
 const CardPlus = styled.TouchableOpacity`
   align-items: center;
+  justify-content: center;
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
-  padding-horizontal: 34px;
-  padding-vertical: 4px;
+  padding: 4px 18px;
 `;
 
 const ButtonsRow = styled.View`
@@ -81,10 +82,10 @@ const Timer = ({onClose, maxValue, minValue}) => {
             <CardPlus
               onPress={() =>
                 setCurrentCount((count) =>
-                  count >= maxValue ? count : count + 1,
+                  count <= minValue ? count : count - 1,
                 )
               }>
-              <CardText>+</CardText>
+              <CardText>-</CardText>
             </CardPlus>
             <CardNumber>
               <CardText>{currentCount}</CardText>
@@ -92,10 +93,10 @@ const Timer = ({onClose, maxValue, minValue}) => {
             <CardPlus
               onPress={() =>
                 setCurrentCount((count) =>
-                  count <= minValue ? count : count - 1,
+                  count >= maxValue ? count : count + 1,
                 )
               }>
-              <CardText>-</CardText>
+              <CardText>+</CardText>
             </CardPlus>
           </CardContainer>
         </CardsRow>

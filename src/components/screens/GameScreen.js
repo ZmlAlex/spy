@@ -79,11 +79,9 @@ const Container = styled.View`
 `;
 
 const Header = styled.View`
-  /* flex: 1; */
   flex-direction: column;
   justify-content: flex-end;
   padding-bottom: 20px;
-  /* padding-top: 20px; */
 `;
 
 const HeaderText = styled.Text`
@@ -94,7 +92,6 @@ const Content = styled.View`
   flex: 1;
   align-items: stretch;
   justify-content: center;
-  /* background-color: red; */
 `;
 
 const Footer = styled.View`

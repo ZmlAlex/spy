@@ -21,8 +21,6 @@ const StyledBackgroudImage = styled(BackgroundImage)`
 
 const Container = styled.View`
   flex: 1;
-  /* background-color: red; */
-  /* padding-horizontal: 40px; */
 `;
 
 const Languge = styled.TouchableOpacity`

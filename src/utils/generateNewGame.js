@@ -34,7 +34,7 @@ const generateNewGame = (playersCount, pack) => {
           id: i,
           title: mockScreenTitle,
           text: firstScreenText,
-          image: require('../assets/rolesScreen/ok-screen.svg'),
+          image: require('../assets/rolesScreen/ok.svg'),
           buttonText: 'Ок',
         };
       }
@@ -44,7 +44,7 @@ const generateNewGame = (playersCount, pack) => {
           title: spyTitle,
           text: spyText,
           location: spyLocation,
-          image: require('../assets/rolesScreen/spy.svg'),
+          backgroundImage: require('../assets/rolesScreen/spy.svg'),
           buttonText: 'Понял',
           isSpy: true,
         };
@@ -54,7 +54,7 @@ const generateNewGame = (playersCount, pack) => {
           id: i,
           title: mockScreenTitle,
           text: mockScreenText,
-          image: require('../assets/rolesScreen/ok-screen.svg'),
+          image: require('../assets/rolesScreen/ok.svg'),
           buttonText: 'Ок',
         };
       }
@@ -63,7 +63,7 @@ const generateNewGame = (playersCount, pack) => {
           id: i,
           title: questionTitle,
           text: questionText,
-          image: require('../assets/rolesScreen/questions.svg'),
+          image: require('../assets/rolesScreen/question.svg'),
           buttonText: 'Смотреть',
         };
       }
@@ -71,7 +71,6 @@ const generateNewGame = (playersCount, pack) => {
         return {
           id: i,
           title: playerTitle,
-          text: 'место',
           location: location,
           additionalText: additionalPlayerText,
           buttonText: 'Понял',

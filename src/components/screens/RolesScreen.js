@@ -7,119 +7,81 @@ import SvgUri from 'react-native-svg-uri';
 import GradientButton from '../shared/GradientButton';
 
 const styles = StyleSheet.create({
-  slide: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'blue',
-  },
   image: {
     justifyContent: 'center',
     position: 'absolute',
     top: 0,
     bottom: 0,
   },
-  text: {
-    color: 'rgba(255, 255, 255, 0.8)',
-    textAlign: 'center',
+  backgroundImage: {
+    justifyContent: 'center',
     position: 'absolute',
-  },
-  title: {
-    fontSize: 22,
-    color: 'white',
-    textAlign: 'center',
-  },
-  gradient: {
-    paddingRight: 46,
-    paddingLeft: 46,
-    paddingTop: 10,
-    paddingBottom: 10,
-    borderRadius: 8,
+    // top: 0,
+    bottom: 0,
+    right: '-50%',
   },
 });
 
 const Container = styled.View`
   flex: 1;
   justify-content: center;
-  /* align-items: center; */
   background-color: white;
   padding: 0 20px;
 `;
 
 const Content = styled.View`
-  flex: 0.7;
-  /* min-height: 321px; */
+  flex: 2;
   justify-content: center;
-  /* background-color: red; */
 `;
 
-// const Card = styled.View`
-//   /* height: 321px; */
-//   position: relative;
-//   width: 100%;
-//   align-items: center;
-//   justify-content: flex-start;
-//   background-color: white;
-//   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
-//   border-radius: 10px;
-// max-height: 321px;
-// `;
-
 const Card = styled.View`
-  /* height: 321px; */
-  /* width: 100px; */
   width: 100%;
-  align-self: center;
   background-color: white;
   height: 100%;
-  max-width: 298px;
-  max-height: 321px;
+  align-items: center;
+  overflow: hidden;
   border-radius: 10px;
-  box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
-  align-items: center;
-  margin: 10px;
-  /* overflow: hidden; */
-  /* position: relative;
+`;
+
+const CardContainer = styled.View`
+  align-self: center;
+  height: 100%;
   width: 100%;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: red;
+  max-width: 212px;
+  max-height: 153px;
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
-  border-radius: 10px; */
-  /* max-height: 321px; */
 `;
 
 const CardText = styled.Text`
   font-weight: bold;
   font-size: 20px;
   padding: 10px;
-  margin: ${({isSpy}) => (isSpy ? '0' : 'auto')};
+  margin: auto;
   color: ${({isSpy}) => (isSpy ? '#FF0000' : '#000')};
 `;
 
 const Header = styled.View`
   align-self: stretch;
-  justify-content: flex-start;
+  justify-content: center;
   height: 130px;
-  /* background-color: blue; */
-  flex: 0.15;
+  flex: 1;
 `;
 
 const Title = styled.Text`
-  font-weight: bold;
+  font-weight: ${({isNormal}) => (isNormal ? 'normal' : 'bold')};
+  color: ${({isSpy}) => (isSpy ? '#FF0000' : '#000')};
   font-size: 20px;
   line-height: 23px;
-  color: black;
   text-align: center;
 `;
 const Footer = styled.View`
-  /* flex: 0.15; */
+  flex: 1;
   align-items: center;
-  /* background-color: green; */
+  justify-content: flex-start;
 `;
 
 const FooterText = styled.Text`
-  margin: 39px 0 21px 0;
+  margin: 0 0 21px 0;
   font-size: 16px;
   height: 18px;
 `;
@@ -132,7 +94,7 @@ const RolesScreen = ({route, navigation}) => {
   const isLastSlide = useSelector(
     (state) => state.roles.slides[state.roles.slides.length - 1].id === slideId,
   );
-  console.log('isLastSlide', isLastSlide);
+
   const slide = useSelector((state) =>
     state.roles.slides.find((currentSlide) => currentSlide.id === slideId),
   );
@@ -140,20 +102,32 @@ const RolesScreen = ({route, navigation}) => {
   return (
     <Container>
       <Header>
-        <Title>{slide.title}</Title>
+        <Title isSpy={slide.isSpy} isNormal={slide.location || slide.isSpy}>
+          {slide.title}
+        </Title>
       </Header>
       <Content>
-        <Card>
-          <CardText isSpy={slide.isSpy}>{slide.location}</CardText>
-          {slide.image && (
-            <SvgUri
-              style={styles.image}
-              // width="500"
-              width={windowWidth}
-              source={slide.image}
-            />
-          )}
-        </Card>
+        {slide.backgroundImage && (
+          <SvgUri
+            style={styles.backgroundImage}
+            // width="500"
+            width={windowWidth}
+            source={slide.backgroundImage}
+          />
+        )}
+        <CardContainer>
+          <Card>
+            <CardText isSpy={slide.isSpy}>{slide.location}</CardText>
+            {slide.image && (
+              <SvgUri
+                style={styles.image}
+                // width="500"
+                width={windowWidth}
+                source={slide.image}
+              />
+            )}
+          </Card>
+        </CardContainer>
       </Content>
       <Footer>
         <FooterText>{slide.additionalText}</FooterText>

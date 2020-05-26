@@ -5775,6 +5775,11 @@ range-parser@~1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
+react-circular-progressbar@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/react-circular-progressbar/-/react-circular-progressbar-2.0.3.tgz#fa8eb59f8db168d2904bae4590641792c80f5991"
+  integrity sha512-YKN+xAShXA3gYihevbQZbavfiJxo83Dt1cUxqg/cltj4VVsRQpDr7Fg1mvjDG3x1KHGtd9NmYKvJ2mMrPwbKyw==
+
 react-devtools-core@^4.0.6:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/react-devtools-core/-/react-devtools-core-4.6.0.tgz#2443b3c6fac78b801702af188abc6d83d56224e6"
@@ -5810,6 +5815,11 @@ react-native-color-matrix-image-filters@5.0.1:
     concat-color-matrices "^1.0.0"
     rn-color-matrices "^4.0.0"
 
+react-native-countdown-circle-timer@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-countdown-circle-timer/-/react-native-countdown-circle-timer-2.1.2.tgz#dedbb6e2950c3d404bed88c931e084d9fa453e4b"
+  integrity sha512-fOGhk5xX/4YCgugp5oPK2U0cixgbzuFdqoZtqmnlULTMVFkZNs5gM/LlTfft+uxFlw0ZmPsMpF4+HrjLJ5r5Aw==
+
 react-native-elements@^1.2.7:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.2.7.tgz#1eca2db715c41722aeb67aea62bd2a4621adb134"
@@ -5844,6 +5854,11 @@ react-native-linear-gradient@^2.5.6:
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.6.tgz#96215cbc5ec7a01247a20890888aa75b834d44a0"
   integrity sha512-HDwEaXcQIuXXCV70O+bK1rizFong3wj+5Q/jSyifKFLg0VWF95xh8XQgfzXwtq0NggL9vNjPKXa016KuFu+VFg==
 
+react-native-progress-circle@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress-circle/-/react-native-progress-circle-2.1.0.tgz#62bdf31c76962d10c5c14446b61ff7d05cf0d0ec"
+  integrity sha512-VP0s92bgbTMQy4hQzPU4LlGyFj3z5u7i1HYFG8/yzXXfGkX1cxKS4xOlE+OTaObWC99w7Bodi3h8R7En2nQPYw==
+
 react-native-ratings@^6.3.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.5.0.tgz#a1606ccba3c5b54eec8e6cfa4765a45cf0e4ab8d"
@@ -5868,11 +5883,6 @@ react-native-screens@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.7.0.tgz#2d3cf3c39a665e9ca1c774264fccdb90e7944047"
   integrity sha512-n/23IBOkrTKCfuUd6tFeRkn3lB2QZ3cmvoubRscR0JU/Zl4/ZyKmwnFmUv1/Fr+2GH/H8UTX59kEKDYYg3dMgA==
-
-react-native-stars@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-stars/-/react-native-stars-1.2.1.tgz#66d523ebaf0cdb58dbba6f24a7607914fe049994"
-  integrity sha512-reeTED4Sizb4HXs3mGm2UFghtuC2D4v38tBgAajd4uQLTfzRDsBUXxxPfT+EqNSMOOk4lcXJ47mKDXD/gbbiaA==
 
 react-native-status-bar-height@^2.2.0:
   version "2.5.0"
