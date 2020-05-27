@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {useSelector, useDispatch, shallowEqual} from 'react-redux';
 import {View, StyleSheet} from 'react-native';
+import {Icon} from 'react-native-elements';
 import {ScrollView} from 'react-native-gesture-handler';
 import styled from 'styled-components';
 import SvgUri from 'react-native-svg-uri';
@@ -60,14 +61,23 @@ const PacksList = styled.View`
   padding: 0 15px;
 `;
 
-const StyledFlatList = styled.FlatList`
-  padding-top: 30px;
-  padding: 30px 40px 0 40px;
-`;
-
 const PackagesOption = ({navigation}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentPack, setCurrentPack] = useState('');
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <View style={{paddingHorizontal: 20}}>
+          <Icon
+            name="keyboard-backspace"
+            label="Игра"
+            onPress={() => navigation.navigate('Игра')}
+          />
+        </View>
+      ),
+    });
+  }, [navigation]);
 
   const pack = useSelector((state) => state.config.package, shallowEqual);
   const dispatch = useDispatch();

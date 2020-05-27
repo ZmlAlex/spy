@@ -1,6 +1,7 @@
 import React, {useMemo, useLayoutEffect, useState} from 'react';
 import {View, Button, StyleSheet, Modal} from 'react-native';
 import styled from 'styled-components';
+import {Icon, Avatar} from 'react-native-elements';
 import SvgUri from 'react-native-svg-uri';
 import GradientButton from '../shared/GradientButton';
 
@@ -114,6 +115,11 @@ const CardText = styled.Text`
   font-size: 18px;
 `;
 
+const StyledAvatar = styled.View`
+  padding-right: 30px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+`;
+
 const GameScreen = ({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [option, setOption] = useState('players');
@@ -125,10 +131,35 @@ const GameScreen = ({navigation}) => {
     [config.package],
   );
 
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerLeft: () => (
+  //       <Button onPress={(e) => dispatch(resetConfig())} title="Язык" />
+  //     ),
+  //   });
+  // }, [navigation, dispatch]);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <Button onPress={(e) => dispatch(resetConfig())} title="Язык" />
+        <View style={{paddingHorizontal: 30}}>
+          <Icon
+            name="question"
+            size={20}
+            onPress={(e) => dispatch(resetConfig())}
+          />
+        </View>
+      ),
+      headerRight: () => (
+        <StyledAvatar>
+          <Avatar
+            size={20}
+            rounded
+            title="MD"
+            onPress={(e) => dispatch(resetConfig())}
+            source={require('../../assets/languageScreen/rus.png')}
+          />
+        </StyledAvatar>
       ),
     });
   }, [navigation, dispatch]);

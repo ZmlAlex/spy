@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, View} from 'react-native';
+import {Icon} from 'react-native-elements';
 import SvgUri from 'react-native-svg-uri';
 
 import GradientButton from '../shared/GradientButton';
@@ -98,6 +99,20 @@ const RolesScreen = ({route, navigation}) => {
   const slide = useSelector((state) =>
     state.roles.slides.find((currentSlide) => currentSlide.id === slideId),
   );
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerLeft: () => (
+        <View style={{paddingLeft: 30}}>
+          <Icon
+            name="close"
+            label="Игра"
+            onPress={() => navigation.navigate('Игра')}
+          />
+        </View>
+      ),
+    });
+  }, [navigation]);
 
   return (
     <Container>
