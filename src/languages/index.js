@@ -17,6 +17,10 @@ export const translationsObject = {
       title: 'Awesome app with i18n!',
       hello: 'Hello, %{name}!',
     },
+    languageScreen: {
+      title: 'Choose language',
+      buttonText: 'Next',
+    },
     tutorialScreen: {
       slides: [
         {
@@ -81,8 +85,12 @@ export const translationsObject = {
   },
   ru: {
     application: {
-      title: 'Приложение с i18n!',
-      hello: 'Hallo, %{name}!',
+      title: 'Выбери язык',
+      buttonText: 'Дальше',
+    },
+    languageScreen: {
+      title: 'Выбери язык',
+      buttonText: 'Дальше',
     },
     tutorialScreen: {
       slides: [

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setLocale} from 'react-redux-i18n';
-import {View, Text, StyleSheet} from 'react-native';
+import {I18n} from 'react-redux-i18n';
+import {View, StyleSheet} from 'react-native';
 import {Avatar, Icon} from 'react-native-elements';
 import GradientButton from '../shared/GradientButton';
 import BackgroundImage from '../shared/BackgroundImageLanguage';
@@ -90,21 +91,21 @@ const Footer = styled.View`
 `;
 
 const LanguageScreen = ({navigation}) => {
+  const currentLanguage = useSelector((state) => state.i18n.locale);
   const dispatch = useDispatch();
-  const [currentLanguage, setCurrentLanguage] = useState(false);
 
   const handlePress = () => {
-    dispatch(setLocale(currentLanguage.value));
-
     navigation.navigate('Tutorial');
   };
+
+  // alert(JSON.stringify(I18n.t('languageScreen.buttonText')));
 
   const keyExtractor = (_, index) => index.toString();
 
   const renderItem = ({item, i}) => (
     <Languge
-      onPress={() => setCurrentLanguage(item)}
-      checked={item.title === currentLanguage.title}>
+      onPress={() => dispatch(setLocale(item.value))}
+      checked={item.value === currentLanguage}>
       <View
         style={{
           flex: 1,
@@ -124,9 +125,7 @@ const LanguageScreen = ({navigation}) => {
         <Icon
           style={{alignContent: 'center'}}
           name="done"
-          color={
-            item.title === currentLanguage.title ? '#1DCC00' : 'transparent'
-          }
+          color={item.value === currentLanguage ? '#1DCC00' : 'transparent'}
         />
       </View>
     </Languge>
@@ -137,7 +136,7 @@ const LanguageScreen = ({navigation}) => {
       <Container style={styles.container}>
         <StyledBackgroudImage />
         <Header>
-          <HeaderText>Выбери язык</HeaderText>
+          <HeaderText>{I18n.t('languageScreen.title')}</HeaderText>
         </Header>
         <Content>
           <View
@@ -159,8 +158,7 @@ const LanguageScreen = ({navigation}) => {
           {currentLanguage && (
             <GradientButton
               onPress={handlePress}
-              title="далее"
-              // isSelected={currentLanguage}
+              title={I18n.t('languageScreen.buttonText')}
             />
           )}
         </Footer>
