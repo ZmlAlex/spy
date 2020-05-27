@@ -8,6 +8,5 @@ export const RoundedButton = styled.TouchableOpacity`
   border-radius: 32px;
   width: 64px;
   height: 64px;
-  background-color: red;
   background-color: ${({danger}) => (danger ? '#EA4A4A' : '#2BD900')};
 `;

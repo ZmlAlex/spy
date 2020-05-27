@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useLayoutEffect} from 'react';
+import React, {useState, useLayoutEffect} from 'react';
 import {HeaderBackButton} from '@react-navigation/stack';
-import {View, Text, Button, Animated} from 'react-native';
-import {Icon} from 'react-native-elements';
-import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
+import {useSelector} from 'react-redux';
 import styled from 'styled-components';
-import {RoundedButton} from '../../components/shared/RounedButton';
+import CompletedGame from '../options/CompletedGame';
+import ActiveGame from '../options/ActiveGame';
 import BackgroundImage from '../shared/BackgroundImageTimer';
 
 const Container = styled.View`
@@ -12,12 +11,7 @@ const Container = styled.View`
   align-items: center;
   justify-content: space-evenly;
   background-color: white;
-`;
-
-const Title = styled.Text`
-  font-weight: bold;
-  text-align: center;
-  font-size: 20px;
+  background-color: ${({timeIsEnd}) => (timeIsEnd ? '#FF6F6F' : 'white')};
 `;
 
 // const Timer = styled.View`
@@ -37,20 +31,9 @@ const StyledBackgroudImage = styled(BackgroundImage)`
   bottom: 0;
 `;
 
-const StyledCircle = styled.View`
-  flex: 1;
-  background-color: white;
-  align-self: stretch;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px;
-  margin: 12px;
-  box-shadow: 28px 28px 50px rgba(0, 0, 0, 0.16);
-`;
-
 const TimerScreen = ({navigation}) => {
-  const [counter, setCounter] = useState(20);
-  const [TimeIsEnd, setTimeIsEnd] = useState(false);
+  const [timeIsEnd, setTimeIsEnd] = useState(false);
+  const counter = useSelector((state) => state.config.timerCount * 60);
 
   // logic for custom timer
   // useEffect(() => {
@@ -76,67 +59,20 @@ const TimerScreen = ({navigation}) => {
   }, [navigation]);
 
   return (
-    <Container>
+    <Container timeIsEnd={timeIsEnd}>
       <StyledBackgroudImage />
-      <Title>Начинайте задавать вопросы. Успейте вычислить шпиона.</Title>
-      <CountdownCircleTimer
-        isPlaying
-        size={202}
-        trailColor="transparent"
-        onComplete={() => console.log('DONE')}
-        duration={132}
-        colors={[['#2CDA00', 0.33], ['#F7B801', 0.33], ['#EA4A4A']]}>
-        {({remainingTime, animatedColor, ...rest}) => {
-          // console.log('rest', Math.floor(remainingTime / 60));
-          const minutes = Math.floor(remainingTime / 60);
-          const seconds = remainingTime - 60 * Math.floor(remainingTime / 60);
-          const zeroForValuesLessThan10 =
-            remainingTime - 60 * Math.floor(remainingTime / 60) < 10 ? '0' : '';
-          return (
-            <StyledCircle>
-              <Animated.Text
-                style={{
-                  color: animatedColor,
-                  fontSize: 30,
-                  fontWeight: 'bold',
-                }}>
-                {`${minutes} : ${zeroForValuesLessThan10}${seconds}`}
-              </Animated.Text>
-            </StyledCircle>
-          );
-        }}
-      </CountdownCircleTimer>
-      <RoundedButton
-        danger
-        // onPress={onClose}
-      >
-        <Icon size={32} name="close" color={'white'} />
-      </RoundedButton>
+      {timeIsEnd ? (
+        <CompletedGame onPress={() => navigation.navigate('Игра')} />
+      ) : (
+        <ActiveGame
+          timeIsEnd={timeIsEnd}
+          counter={counter}
+          onComplete={() => setTimeIsEnd(true)}
+          onPress={() => navigation.navigate('Игра')}
+        />
+      )}
     </Container>
   );
 };
-
-TimerScreen.navigationOptions = ({navigate, navigation}) => ({
-  tabBarLabel: 'Your custom label...',
-  headerStyle: {
-    backgroundColor: '#f4511e',
-  },
-  headerRight: (
-    <Button
-      title="Name"
-      onPress={() => {
-        navigation.navigate('viewname');
-      }}
-    />
-  ),
-  headerLeft: (
-    <Button
-      title="Name"
-      onPress={() => {
-        navigation.navigate('viewname');
-      }}
-    />
-  ),
-});
 
 export default TimerScreen;
