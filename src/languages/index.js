@@ -24,50 +24,49 @@ export const translationsObject = {
     tutorialScreen: {
       slides: [
         {
-          title: 'Cыграем в Шпиона ?',
-          text: 'Листай дальше и узнай, что нужно делать.',
+          title: "Let's play spy ?",
+          text: 'Swipe left to find out what to do',
           // image: require('./assets/1.jpg'),
           backgroundColor: '#59b2ab',
         },
         {
           text:
-            'В игре участвуют местные и Шпион. Передеавайте друг другу телефон, чтобы узнать свои роли. Всем...',
+            'There are locals and the spy. Pass the phone around to get our roles. All the locals will see...',
           // image: require('./assets/2.jpg'),
           backgroundColor: '#febe29',
         },
         {
           text:
-            'Задавайте друг другу вопросы связнные с данной локацией. Например: Когда ты по...',
+            "Ask each other questions connected with the location. For example: 'When have you last bee... ",
           // image: require('./assets/3.jpg'),
           backgroundColor: '#22bcb5',
         },
         {
           text:
-            'Прислушивайтесь к ответам других игроков: Шпион не знает локацию, из-за чего может отвеча...',
+            "Listen to the other players answers: the spy doens't know the location so their answers might...",
           // image: require('./assets/3.jpg'),
           backgroundColor: '#22bcb5',
         },
         {
           text:
-            'Если подозреваешь кого-то в шпионаже, скажи : <Я знаю, кто Шпион>. На счет <три> все вместе',
+            "If you have a guess about who the spy is, simply say: 'I know which one of you is the Spy.'...",
           // image: require('./assets/3.jpg'),
           backgroundColor: '#22bcb5',
         },
         {
           text:
-            'Выбрали одного и того же человека? Он должен раскрыть свою роль. Если это действительно Шпион...',
+            'Have you all chosen the same person? They have to rveal their role. If they are the Spy, the Locals...',
           // image: require('./assets/3.jpg'),
           backgroundColor: '#22bcb5',
         },
         {
           text:
-            'Если шпион догадался, о каком месте говорят местные, он может его назвать. Если он угадывает',
+            'If the Spy guesses what the location is, they can name it. If they are right, the Spy wins, if they na...',
           // image: require('./assets/3.jpg'),
           backgroundColor: '#22bcb5',
         },
         {
-          text:
-            'Не забывайте про таймер! Время игры ограничего стоит поторопиться...',
+          text: "Don't forget about the timer. The clock is ticking, hurry up!",
           // image: require('./assets/3.jpg'),
           backgroundColor: '#22bcb5',
         },

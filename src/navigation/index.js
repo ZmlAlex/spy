@@ -39,14 +39,19 @@ const GameStackScreen = () => (
     <GameStack.Screen
       name="Роли"
       component={RolesScreen}
-      options={generateHeaderStyles()}
+      options={{
+        headerStyle: {
+          shadowColor: 'transparent',
+        },
+        gestureEnabled: false,
+      }}
     />
     <GameStack.Screen
       name="Время"
       component={TimerScreen}
       options={{
         header: () => null,
-        gesturesEnabled: false,
+        gestureEnabled: false,
       }}
     />
 
