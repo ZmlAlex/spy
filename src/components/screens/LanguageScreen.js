@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {useDispatch, useSelector} from 'react-redux';
 import {setLocale} from 'react-redux-i18n';
@@ -51,20 +51,14 @@ const StyledFlatList = styled.FlatList`
   background-color: #e2e2e2;
   border-radius: 8px;
   overflow: hidden;
-  /* background-color: blue; */
-  /* flex: 1; */
   z-index: 10;
-  /* flex: 1; */
   width: 218px;
-  /* background-color: red; */
-  /* max-width: 218px; */
 `;
 
 const Header = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
-  /* background-color: green; */
 `;
 
 const HeaderText = styled.Text`
@@ -79,7 +73,6 @@ const Content = styled.View`
   align-items: stretch;
   justify-content: center;
   margin: 0 80px;
-  /* background-color: red; */
 `;
 
 const Footer = styled.View`
@@ -87,7 +80,6 @@ const Footer = styled.View`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  /* background-color: blue; */
 `;
 
 const LanguageScreen = ({navigation}) => {
@@ -97,8 +89,6 @@ const LanguageScreen = ({navigation}) => {
   const handlePress = () => {
     navigation.navigate('Tutorial');
   };
-
-  // alert(JSON.stringify(I18n.t('languageScreen.buttonText')));
 
   const keyExtractor = (_, index) => index.toString();
 

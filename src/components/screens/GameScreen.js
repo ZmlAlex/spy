@@ -197,11 +197,6 @@ const GameScreen = ({navigation}) => {
       </Modal>
 
       <Container>
-        {/* <SvgUri
-          style={styles.backgroundImage}
-          width="500"
-          source={require('../../assets/gameScreen/background.svg')}
-        /> */}
         <StyledBackgroudImage />
         <Header>
           <HeaderText>Настрой игру</HeaderText>

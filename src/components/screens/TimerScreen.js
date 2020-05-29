@@ -14,17 +14,6 @@ const Container = styled.View`
   background-color: ${({timeIsEnd}) => (timeIsEnd ? '#FF6F6F' : 'white')};
 `;
 
-// const Timer = styled.View`
-//   font-weight: bold;
-//   width: 202px;
-//   height: 202px;
-//   background-color: white;
-//   box-shadow: 28px 28px 50px rgba(0, 0, 0, 0.16);
-//   border-radius: 100px;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
 const StyledBackgroudImage = styled(BackgroundImage)`
   position: absolute;
   top: 0;
@@ -34,18 +23,6 @@ const StyledBackgroudImage = styled(BackgroundImage)`
 const TimerScreen = ({navigation}) => {
   const [timeIsEnd, setTimeIsEnd] = useState(false);
   const counter = useSelector((state) => state.config.timerCount * 60);
-
-  // logic for custom timer
-  // useEffect(() => {
-  //   const timer =
-  //     counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
-
-  //   if (!counter) {
-  //     setCounter('end');
-  //   }
-
-  //   return () => clearInterval(timer);
-  // }, [counter]);
 
   useLayoutEffect(() => {
     navigation.setOptions({

@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   backgroundImage: {
     justifyContent: 'center',
     position: 'absolute',
-    // top: 0,
     bottom: 0,
     right: '-50%',
   },
@@ -125,7 +124,6 @@ const RolesScreen = ({route, navigation}) => {
         {slide.backgroundImage && (
           <SvgUri
             style={styles.backgroundImage}
-            // width="500"
             width={windowWidth}
             source={slide.backgroundImage}
           />
@@ -136,7 +134,6 @@ const RolesScreen = ({route, navigation}) => {
             {slide.image && (
               <SvgUri
                 style={styles.image}
-                // width="500"
                 width={windowWidth}
                 source={slide.image}
               />

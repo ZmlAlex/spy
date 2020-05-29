@@ -16,8 +16,6 @@ const spyLocation = 'Ты шпион';
 // player content
 const playerTitle =
   'Ты местный. Все игроки, кроме шпиона, знают эту локацию. Задавай вопросы другим игрокам, чтобы вычислить, кто из них шпион';
-const playerText =
-  'Ты местный. Все игроки, кроме шпиона, знают эту локацию. Задавай вопросы другим игрокам, чтобы вычислить, кто из них шпион';
 const additionalPlayerText = 'Нажми и следуй правилам';
 
 const generateNewGame = (playersCount, pack) => {
