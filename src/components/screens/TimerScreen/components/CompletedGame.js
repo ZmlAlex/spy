@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import styled from 'styled-components';
-import {StyledButton} from '../shared/Button';
+import {StyledButton} from '../../../shared/Button';
 
 const ButtonText = styled.Text`
   color: white;

@@ -10,8 +10,8 @@ import RolesScreen from '../components/screens/RolesScreen';
 import LanguageScreen from '../components/screens/LanguageScreen';
 import TutorialScreen from '../components/screens/TutorialScreen';
 
-import PlayersOptions from '../components/options/PlayersOptions';
-import TimerOptions from '../components/options/TimerOptions';
+import PlayersOptions from '../components/screens/GameScreen/components/PlayersOptions';
+import TimerOptions from '../components/screens/GameScreen/components/TimerOptions';
 import PackagesOptions from '../components/options/PackagesOptions';
 import TimerScreen from '../components/screens/TimerScreen';
 

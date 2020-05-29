@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {useSelector, useDispatch} from 'react-redux';
-import {changeConfig} from '../../redux/reducers/configReducer';
-// import {View, Button, FlatList, StyleSheet, Text} from 'react-native';
-import {RoundedButton} from '../shared/RounedButton';
 import {Icon} from 'react-native-elements';
+import {changeConfig} from '../../../../redux/reducers/configReducer';
+import {RoundedButton} from '../../../shared/RounedButton';
 
 const Container = styled.View`
   flex: 1;

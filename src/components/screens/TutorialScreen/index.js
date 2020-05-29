@@ -1,11 +1,10 @@
 import React from 'react';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import {useDispatch} from 'react-redux';
-import {I18n} from 'react-redux-i18n';
-import {changeConfig} from '../../redux/reducers/configReducer';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {View, Text, Button, StyleSheet, Image} from 'react-native';
+import {changeConfig} from '../../../redux/reducers/configReducer';
 
-import {tutorialSlides} from '../../data/config';
+import {tutorialSlides} from '../../../data/config';
 
 const styles = StyleSheet.create({
   slide: {

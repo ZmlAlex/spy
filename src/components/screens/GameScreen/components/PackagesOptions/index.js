@@ -86,8 +86,6 @@ const PackagesOption = ({navigation}) => {
     dispatch(changeConfig({option: 'package', value: item}));
   };
 
-  const keyExtractor = (_, index) => index.toString();
-
   const renderItem = (item, index) => {
     return (
       <PackageCard

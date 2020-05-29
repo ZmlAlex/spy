@@ -1,66 +1,26 @@
 import React, {useMemo, useLayoutEffect, useState} from 'react';
-import {View, Button, StyleSheet, Modal} from 'react-native';
+import {View, StyleSheet, Modal} from 'react-native';
 import styled from 'styled-components';
 import {Icon, Avatar} from 'react-native-elements';
-import SvgUri from 'react-native-svg-uri';
-import GradientButton from '../shared/GradientButton';
+import GradientButton from '../../shared/GradientButton';
 
-import {useSelector, shallowEqual, useDispatch} from 'react-redux';
-import {I18n} from 'react-redux-i18n';
-import {ListItem} from 'react-native-elements';
-import {BlurView, VibrancyView} from '@react-native-community/blur';
-import {createSlides} from '../../redux/reducers/rolesReducer';
-import {resetConfig} from '../../redux/reducers/configReducer';
+import {useSelector, useDispatch} from 'react-redux';
+import {BlurView} from '@react-native-community/blur';
+import {createSlides} from '../../../redux/reducers/rolesReducer';
+import {resetConfig} from '../../../redux/reducers/configReducer';
 
-import {optionsList, packs} from '../../data/config';
-import PlayersOptions from '../options/PlayersOptions';
-import TimerOptions from '../options/TimerOptions';
+import PlayersOptions from './components/PlayersOptions';
+import TimerOptions from './components/TimerOptions';
+import BackgroundImage from '../../shared/Backgrounds/BackgroundImageGame';
 
-import generateNewGame from '../../utils/generateNewGame';
-
-import BackgroundImage from '../shared/BackgroundImageGame';
+import {packs} from '../../../data/config';
+import generateNewGame from '../../../utils/generateNewGame';
 
 const styles = StyleSheet.create({
   backgroundImage: {
     top: '-1%',
     left: '-10%',
     position: 'absolute',
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
   },
   contentWrap: {
     flex: 1,
@@ -131,14 +91,6 @@ const GameScreen = ({navigation}) => {
     [config.package],
   );
 
-  // useLayoutEffect(() => {
-  //   navigation.setOptions({
-  //     headerLeft: () => (
-  //       <Button onPress={(e) => dispatch(resetConfig())} title="Язык" />
-  //     ),
-  //   });
-  // }, [navigation, dispatch]);
-
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -157,7 +109,7 @@ const GameScreen = ({navigation}) => {
             rounded
             title="MD"
             onPress={(e) => dispatch(resetConfig())}
-            source={require('../../assets/languageScreen/rus.png')}
+            source={require('../../../assets/languageScreen/rus.png')}
           />
         </StyledAvatar>
       ),

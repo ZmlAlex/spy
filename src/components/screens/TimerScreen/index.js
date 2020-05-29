@@ -2,9 +2,9 @@ import React, {useState, useLayoutEffect} from 'react';
 import {HeaderBackButton} from '@react-navigation/stack';
 import {useSelector} from 'react-redux';
 import styled from 'styled-components';
-import CompletedGame from '../options/CompletedGame';
-import ActiveGame from '../options/ActiveGame';
-import BackgroundImage from '../shared/BackgroundImageTimer';
+import CompletedGame from './components/CompletedGame';
+import ActiveGame from './components/ActiveGame';
+import BackgroundImage from '../../shared/Backgrounds/BackgroundImageTimer';
 
 const Container = styled.View`
   flex: 1;

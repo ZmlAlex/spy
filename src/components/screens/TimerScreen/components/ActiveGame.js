@@ -3,7 +3,7 @@ import {Animated} from 'react-native';
 import {Icon} from 'react-native-elements';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 import styled from 'styled-components';
-import {RoundedButton} from '../../components/shared/RounedButton';
+import {RoundedButton} from '../../../shared/RounedButton';
 
 const Title = styled.Text`
   font-weight: bold;

@@ -5,7 +5,7 @@ import {StyleSheet, Dimensions, View} from 'react-native';
 import {Icon} from 'react-native-elements';
 import SvgUri from 'react-native-svg-uri';
 
-import GradientButton from '../shared/GradientButton';
+import GradientButton from '../../shared/GradientButton';
 
 const styles = StyleSheet.create({
   image: {

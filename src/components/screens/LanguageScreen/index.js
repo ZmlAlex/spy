@@ -5,10 +5,10 @@ import {setLocale} from 'react-redux-i18n';
 import {I18n} from 'react-redux-i18n';
 import {View, StyleSheet} from 'react-native';
 import {Avatar, Icon} from 'react-native-elements';
-import GradientButton from '../shared/GradientButton';
-import BackgroundImage from '../shared/BackgroundImageLanguage';
+import GradientButton from '../../shared/GradientButton';
+import BackgroundImage from '../../shared/Backgrounds/BackgroundImageLanguage';
 
-import {languagesList} from '../../languages';
+import {languagesList} from '../../../languages';
 
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -123,7 +123,7 @@ const LanguageScreen = ({navigation}) => {
 
   return (
     <>
-      <Container style={styles.container}>
+      <Container>
         <StyledBackgroudImage />
         <Header>
           <HeaderText>{I18n.t('languageScreen.title')}</HeaderText>
