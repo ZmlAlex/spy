@@ -1,31 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import SvgUri from 'react-native-svg-uri';
-import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import {Icon} from 'react-native-elements';
 import Stars from './Stars';
-
-const styles = StyleSheet.create({
-  backgroundImage: {
-    top: '-5%',
-    position: 'absolute',
-  },
-  myStarStyle: {
-    color: 'yellow',
-    backgroundColor: 'transparent',
-    textShadowColor: 'black',
-    textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 2,
-  },
-  myEmptyStarStyle: {
-    color: 'white',
-  },
-  contentWrap: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 const Card = styled.TouchableOpacity`
   width: 47%;
@@ -69,9 +47,7 @@ const PackageCard = ({
         }}>
         <ActiveLabelContainer active={active}>
           <SvgUri
-            style={styles.acceptImage}
-            // width="500"
-            source={require('../../../assets/packagesOptions/accept.svg')}
+            source={require('../../../../../assets/packagesOptions/accept.svg')}
           />
         </ActiveLabelContainer>
         <ActiveLabelContainer active>

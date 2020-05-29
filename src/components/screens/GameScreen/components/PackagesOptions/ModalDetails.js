@@ -25,7 +25,6 @@ const Content = styled.View`
 `;
 
 const ModalDetails = ({isOpen, handleOpen, currentPack}) => {
-  console.log('current pack', currentPack);
   return (
     <>
       <Modal animationType="slide" transparent={true} visible={isOpen}>

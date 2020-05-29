@@ -4,16 +4,16 @@ import {useSelector} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import GameScreen from '../components/screens/GameScreen';
-import RolesScreen from '../components/screens/RolesScreen';
-
 import LanguageScreen from '../components/screens/LanguageScreen';
 import TutorialScreen from '../components/screens/TutorialScreen';
 
+import GameScreen from '../components/screens/GameScreen';
+import RolesScreen from '../components/screens/RolesScreen';
+import TimerScreen from '../components/screens/TimerScreen';
+
 import PlayersOptions from '../components/screens/GameScreen/components/PlayersOptions';
 import TimerOptions from '../components/screens/GameScreen/components/TimerOptions';
-import PackagesOptions from '../components/options/PackagesOptions';
-import TimerScreen from '../components/screens/TimerScreen';
+import PackagesOptions from '../components/screens/GameScreen/components/PackagesOptions';
 
 //helpers
 import {generateHeaderStyles} from '../utils/navigationHelpers';

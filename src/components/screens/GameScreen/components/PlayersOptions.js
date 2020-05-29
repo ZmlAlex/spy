@@ -86,7 +86,6 @@ const Players = ({navigation, onClose, maxValue, minValue, mode}) => {
               }>
               <CardText>-</CardText>
             </CardPlus>
-
             <CardNumber>
               <CardText>{currentCount}</CardText>
             </CardNumber>

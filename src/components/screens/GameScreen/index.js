@@ -67,17 +67,20 @@ const Card = styled.TouchableOpacity`
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
   background-color: white;
   border-radius: 10px;
-  padding-horizontal: 14px;
-  padding-top: 9px;
+  padding: 9px 14px 0 14px;
 `;
 
 const CardText = styled.Text`
   font-size: 18px;
 `;
 
-const StyledAvatar = styled.View`
+const AvatarContainer = styled.View`
   padding-right: 30px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+`;
+
+const IconContainer = styled.View`
+  padding: 30px;
 `;
 
 const GameScreen = ({navigation}) => {
@@ -94,16 +97,16 @@ const GameScreen = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <View style={{paddingHorizontal: 30}}>
+        <IconContainer>
           <Icon
             name="question"
             size={20}
             onPress={(e) => dispatch(resetConfig())}
           />
-        </View>
+        </IconContainer>
       ),
       headerRight: () => (
-        <StyledAvatar>
+        <AvatarContainer>
           <Avatar
             size={20}
             rounded
@@ -111,7 +114,7 @@ const GameScreen = ({navigation}) => {
             onPress={(e) => dispatch(resetConfig())}
             source={require('../../../assets/languageScreen/rus.png')}
           />
-        </StyledAvatar>
+        </AvatarContainer>
       ),
     });
   }, [navigation, dispatch]);

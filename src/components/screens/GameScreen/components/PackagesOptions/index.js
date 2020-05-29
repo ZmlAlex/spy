@@ -7,29 +7,14 @@ import styled from 'styled-components';
 import SvgUri from 'react-native-svg-uri';
 import ModalDetails from './ModalDetails';
 import PackageCard from './PackageCard';
-import {changeConfig} from '../../../redux/reducers/configReducer';
+import {changeConfig} from '../../../../../redux/reducers/configReducer';
 
-import {packs} from '../../../data/config';
+import {packs} from '../../../../../data/config';
 
 const styles = StyleSheet.create({
   backgroundImage: {
     top: '-6%',
     position: 'absolute',
-  },
-  myStarStyle: {
-    color: 'yellow',
-    backgroundColor: 'transparent',
-    textShadowColor: 'black',
-    textShadowOffset: {width: 1, height: 1},
-    textShadowRadius: 2,
-  },
-  myEmptyStarStyle: {
-    color: 'white',
-  },
-  contentWrap: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
 
@@ -110,7 +95,7 @@ const PackagesOption = ({navigation}) => {
         <SvgUri
           style={styles.backgroundImage}
           width="500"
-          source={require('../../../assets/packagesOptions/background.svg')}
+          source={require('../../../../../assets/packagesOptions/background.svg')}
         />
         <ScrollView>
           <Header>
